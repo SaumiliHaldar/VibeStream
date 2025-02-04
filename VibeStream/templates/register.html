@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+<body>
+  <div class="container">
+    <div class="registration form">
+      <header>SignUp</header>
+      <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+
+        <!-- First Name -->
+        <input type="text" placeholder="Enter your first name" name="first_name" value="{{ request.POST.first_name }}">
+        {% if error_first_name %}
+          <div style="color: red;">{{ error_first_name }}</div>
+        {% endif %}
+
+        <!-- Last Name -->
+        <input type="text" placeholder="Enter your last name" name="last_name" value="{{ request.POST.last_name }}">
+        {% if error_last_name %}
+          <div style="color: red;">{{ error_last_name }}</div>
+        {% endif %}
+
+        <!-- Email -->
+        <input type="email" placeholder="Enter your email" name="email" value="{{ request.POST.email }}">
+        {% if error_email %}
+          <div style="color: red;">{{ error_email }}</div>
+        {% endif %}
+
+        <!-- Password -->
+        <input type="password" placeholder="Create a password" name="password1">
+        {% if error_password1 %}
+          <div style="color: red;">{{ error_password1 }}</div>
+        {% endif %}
+
+        <!-- Confirm Password -->
+        <input type="password" placeholder="Confirm your password" name="password2">
+        {% if error_password2 %}
+          <div style="color: red;">{{ error_password2 }}</div>
+        {% endif %}
+
+        <!-- Submit Button -->
+        <input type="submit" class="button" value="Signup">
+
+        <center>
+          {% if messages %}
+            <ul style="color: red;">
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </center>
+      </form>
+
+      <!-- Link to Sign In -->
+      <div class="signup">
+        <span class="signup">Already have an account?
+          <a href="{% url 'login' %}"><label for="check">Signin</label></a>
+        </span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
