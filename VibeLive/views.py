@@ -7,7 +7,7 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'tittle': 'Home'})
 
 def register(request):
     if request.method == 'POST':
@@ -54,7 +54,7 @@ def register(request):
             'error_general': errors.get('general', '')
         })
 
-    return render(request, 'register.html')
+    return render(request, 'register.html', {'tittle': 'SignUp'})
 
 
 def signin(request):
@@ -68,7 +68,7 @@ def signin(request):
         else:
             return render(request, 'login.html', {'error': "Invalid credentials. Please try again."})
 
-    return render(request, 'login.html')
+    return render(request, 'login.html', {'tittle': 'Login'})
 
 @login_required
 def dashboard(request):
@@ -76,7 +76,7 @@ def dashboard(request):
         'name': request.user.first_name
     }
     print(context)
-    return render(request, 'dashboard.html', context)
+    return render(request, 'dashboard.html', context, {'tittle': 'Dashboard'})
 
 @login_required
 def meeting(request):
