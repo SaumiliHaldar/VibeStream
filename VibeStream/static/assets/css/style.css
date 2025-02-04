@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #2a78b2, #1e4a78); /* A fresh blue gradient */
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.container {
+  position: relative;
+  max-width: 450px;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.container:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.form header {
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.8rem;
+  color: #333;
+}
+
+.form input {
+  height: 55px;
+  width: 100%;
+  padding: 0 20px;
+  font-size: 18px;
+  margin-bottom: 1.2rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.3s ease-in-out;
+}
+
+.form input:focus {
+  border: 2px solid #2a78b2; /* Focused input with blue */
+  box-shadow: 0 0 5px rgba(42, 120, 178, 0.3);
+}
+
+.form input.button {
+  color: #fff;
+  background: #2a78b2; /* Button with blue background */
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.form input.button:hover {
+  background: #1e4a78; /* Darker blue on hover */
+  transform: translateY(-2px);
+}
+
+.form input.button:active {
+  transform: translateY(1px);
+}
+
+.form a {
+  font-size: 16px;
+  color: #2a78b2; /* Link in blue */
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  margin-top: 1rem;
+}
+
+.form a:hover {
+  text-decoration: underline;
+}
+
+.signup {
+  font-size: 17px;
+  text-align: center;
+}
+
+.signup label {
+  color: #2a78b2;
+  cursor: pointer;
+}
+
+.signup label:hover {
+  text-decoration: underline;
+}
+
+/* Intro Section */
+.intro {
+  margin: auto;
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.intro h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.intro h2 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.intro a {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 32px;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.intro a:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.intro a:active {
+  transform: translateY(1px);
+}
+
+/* Dashboard Section */
+.dashboard {
+  margin: auto;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+}
+
+.dashboard h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.dashboard a {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 32px;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.dashboard a:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.dashboard a:active {
+  transform: translateY(1px);
+}
+
+.dashboard {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
