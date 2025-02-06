@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# exit on error
+# Exit on error
 set -o errexit
 
 # Install dependencies
@@ -11,13 +11,12 @@ python manage.py collectstatic --no-input
 # Run migrations
 python manage.py migrate --no-input
 
-# Check if superuser exists, and create if not
+# Create superuser only if it doesn't exist
 python manage.py shell <<EOF
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-# Check if superuser already exists
-if not User.objects.filter(username="admin").exists():
+if not User.objects.filter(username="saumilihaldar").exists():
     User.objects.create_superuser(
         username="saumilihaldar",
         email="haldar.saumili843@gmail.com",
@@ -25,5 +24,5 @@ if not User.objects.filter(username="admin").exists():
     )
     print("Superuser created successfully!")
 else:
-    print("Superuser already exists.")
+    print("Superuser already exists. Skipping creation.")
 EOF
