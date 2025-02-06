@@ -30,7 +30,8 @@ VibeStream aims to revolutionize live streaming by providing robust tools for co
 - **Python**: Core programming language.
 - **HTML/CSS**: For front-end design and layout.
 - **JavaScript**: For interactive elements.
-- **SQLite**: Lightweight database for data storage.
+- **PostgreSQL**: Lightweight database for data storage.
+- **ZegoCloud**: API for seamless voice and video calls.
 
 ## Installation
 
