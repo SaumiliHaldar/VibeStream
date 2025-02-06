@@ -73,15 +73,17 @@ def signin(request):
 @login_required
 def dashboard(request):
     context = {
-        'name': request.user.first_name
+        'name': request.user.first_name,
+        'tittle': 'Dashboard'
     }
     print(context)
-    return render(request, 'dashboard.html', context, {'tittle': 'Dashboard'})
+    return render(request, 'dashboard.html', context)
 
 @login_required
 def meeting(request):
     context = {
         'name': request.user.first_name + " " + request.user.last_name
+        , 'tittle': 'Meeting'
     }
     return render(request, 'meeting.html', context)
 
@@ -90,7 +92,7 @@ def join_room(request):
     if request.method == 'POST':
         roomID = request.POST['roomID']
         return redirect("/meeting?roomID=" + roomID)
-    return render(request, 'joinroom.html')
+    return render(request, 'joinroom.html',  {'tittle': 'Join Room'})
 
 @login_required
 def logout_view(request):
