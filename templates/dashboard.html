@@ -26,4 +26,35 @@
     <a href="{% url 'logout' %}" class="button">Logout</a>
   </div>
 </body>
+<script>
+  // Function to update the time and date
+  function updateTime() {
+    const now = new Date();
+
+    // Get time in 12-hour format (with leading zero if needed)
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12;
+    const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+    const timeString = `${formattedHours}:${formattedMinutes} ${ampm}`;
+
+    // Get day and date
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const day = days[now.getDay()];
+    const month = months[now.getMonth()];
+    const date = now.getDate();
+    const dateString = `${day}, ${month} ${date}`;
+
+    // Update the DOM with the current time and date
+    document.getElementById('current-time').textContent = `${timeString} | ${dateString}`;
+  }
+
+  // Update the time every second
+  setInterval(updateTime, 1000);
+
+  // Initial call to set the time immediately
+  updateTime();
+</script>
 </html>
