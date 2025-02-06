@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import environ
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -87,7 +88,9 @@ WSGI_APPLICATION = 'VibeStream.wsgi.application'
 # }
 
 env = environ.Env()
-environ.Env.read_env() 
+env_file = os.path.join(BASE_DIR, '.env')
+if os.path.exists(env_file):  # Only load if .env exists
+    environ.Env.read_env(env_file)
 
 DATABASES = {
     'default': env.db('DATABASE_URL', default='postgres://postgres:admin@localhost:5432/vibestream')
@@ -141,3 +144,11 @@ STATICSTORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Email sending for Authentication
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')  # Load from .env
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')  # Load from .env

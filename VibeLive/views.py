@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 
@@ -34,6 +36,23 @@ def register(request):
                 user.first_name = first_name
                 user.last_name = last_name
                 user.save()
+
+                # Send email on account creation
+                send_mail(
+                    'Welcome to VibeStream',  # Subject
+                    f'Hello {user.first_name},\n\n'
+                    f'Welcome to VibeStream! We are thrilled to have you as part of our community.\n\n'
+                    f'With VibeStream, you can connect, collaborate, and share amazing moments seamlessly. We strive to provide the best experience for you, and our support team is always here if you need any help.\n\n'
+                    f'If you have any questions, feel free to reach out to us anytime.\n\n'
+                    f'Enjoy your journey with VibeStream!\n\n'
+                    f'Best regards,\n'
+                    f'Saumili Haldar\n'
+                    f'VibeStream Team',  # Message body
+                    settings.EMAIL_HOST_USER,  # From email
+                    [user.email],  # To email
+                    fail_silently=False,
+                )
+
 
                 # Optionally, auto-login the user after registration
                 login(request, user)
