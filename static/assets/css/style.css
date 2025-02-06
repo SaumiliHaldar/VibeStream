@@ -230,3 +230,71 @@ nav {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* Media Queries for Responsiveness */
+
+/* For Mobile (up to 768px) */
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .intro h1 {
+    font-size: 2rem;
+  }
+
+  .intro h2 {
+    font-size: 1.1rem;
+  }
+
+  .intro a {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .navbar-logo {
+    font-size: 1rem;
+  }
+
+  .navbar-logo img {
+    height: 25px; /* Smaller logo */
+  }
+
+  .container {
+    padding: 1rem;
+    max-width: 80vw;
+    max-height: max-content;
+  }
+
+  .form header {
+    font-size: 1.8rem;
+  }
+
+  .form input {
+    font-size: medium;
+  }
+
+  .form input.button {
+    font-size: 1rem;
+  }
+
+  .form a {
+    font-size: 12px;
+  }
+
+  .date-time {
+    font-size: small;
+  }
+
+  .dashboard a {
+    display: block;
+    width: 50%;
+    margin: 10px auto;
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .dashboard h1 {
+    font-size: 2rem;
+  }
+}
