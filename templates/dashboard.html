@@ -6,10 +6,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>VibeStream | {{tittle}}</title>
+  <title>{{tittle}} | VibeStream</title>
+  <link rel="icon" href="{% static 'assets/images/video-call.webp' %}">
   <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 </head>
 <body>
+  <nav>
+    <div class="navbar-logo">
+      <img src="{% static 'assets/images/video-call.webp' %}" alt="VibeStream Logo"> 
+      VibeStream
+    </div>
+    <div class="date-time" id="current-time"></div>
+  </nav>
   <div class="dashboard">
     <h1>Welcome, {{ name }}!</h1>
     <!-- create a "New Meeting" button -->

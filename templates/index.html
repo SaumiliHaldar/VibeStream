@@ -1,21 +1,63 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>VibeStream | {{tittle}}</title>
+  <title>{{tittle}} | VibeStream</title>
+  <link rel="icon" href="{% static 'assets/images/video-call.webp' %}">
   <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-  <body>
-    <div class="intro">
-        <h1>Welcome to my Awesome Video Conferencing App!</h1>
-        <h2>For all your professional and personal needs!</h2>
-        <!-- create a signup and signin button-->
-        <a href="{% url 'login' %}" class="button">Sign In</a>
-        <a href="{% url 'register' %}" class="button">Sign Up</a>
-    </div>
-  </body>
 </head>
+<body>
+  <nav>
+    <div class="navbar-logo">
+      <img src="{% static 'assets/images/video-call.webp' %}" alt="VibeStream Logo"> 
+      VibeStream
+    </div>
+    <div class="date-time" id="current-time"></div>
+  </nav>
+
+  <!-- Intro Section -->
+  <div class="intro">
+    <h1>Welcome to VibeStream!</h1>
+    <h2>Stay connected with seamless video calls, anytime, anywhere!</h2>
+
+    <!-- Sign In and Sign Up buttons-->
+    <a href="{% url 'login' %}" class="button">Sign In</a>
+    <a href="{% url 'register' %}" class="button">Sign Up</a>
+  </div>
+
+  <script>
+    // Function to update the time and date
+    function updateTime() {
+      const now = new Date();
+
+      // Get time in 12-hour format (with leading zero if needed)
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      const formattedHours = hours % 12 || 12;
+      const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+      const timeString = `${formattedHours}:${formattedMinutes} ${ampm}`;
+
+      // Get day and date
+      const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const day = days[now.getDay()];
+      const month = months[now.getMonth()];
+      const date = now.getDate();
+      const dateString = `${day}, ${month} ${date}`;
+
+      // Update the DOM with the current time and date
+      document.getElementById('current-time').textContent = `${timeString} | ${dateString}`;
+    }
+
+    // Update the time every second
+    setInterval(updateTime, 1000);
+
+    // Initial call to set the time immediately
+    updateTime();
+  </script>
+</body>
 </html>
