@@ -24,6 +24,7 @@ VibeStream aims to revolutionize live streaming by providing robust tools for co
 - **User Authentication**: Secure user registration and login system.
 - **Stream Management**: Tools to manage and customize live streams.
 - **Responsive Design**: Optimized for both desktop and mobile devices.
+- **Email Notifications**: Sends an email when a user account is created.
 
 ## Technologies Used
 
