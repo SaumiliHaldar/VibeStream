@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{{tittle}} | VibeStream</title>
+  <title>{{ tittle }} | VibeStream</title>
   <link rel="icon" href="{% static 'assets/images/video-call.webp' %}">
   <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 </head>
@@ -18,46 +18,32 @@
 
         <!-- First Name -->
         <input type="text" placeholder="Enter your first name" name="first_name" value="{{ request.POST.first_name }}">
-        {% if error_first_name %}
-          <div style="color: red;">{{ error_first_name }}</div>
-        {% endif %}
 
         <!-- Last Name -->
         <input type="text" placeholder="Enter your last name" name="last_name" value="{{ request.POST.last_name }}">
-        {% if error_last_name %}
-          <div style="color: red;">{{ error_last_name }}</div>
-        {% endif %}
 
         <!-- Email -->
         <input type="email" placeholder="Enter your email" name="email" value="{{ request.POST.email }}">
-        {% if error_email %}
-          <div style="color: red;">{{ error_email }}</div>
-        {% endif %}
 
         <!-- Password -->
         <input type="password" placeholder="Create a password" name="password1">
-        {% if error_password1 %}
-          <div style="color: red;">{{ error_password1 }}</div>
-        {% endif %}
 
         <!-- Confirm Password -->
         <input type="password" placeholder="Confirm your password" name="password2">
-        {% if error_password2 %}
-          <div style="color: red;">{{ error_password2 }}</div>
-        {% endif %}
 
         <!-- Submit Button -->
         <input type="submit" class="button" value="Signup">
 
-        <center>
-          {% if messages %}
-            <ul style="color: red;">
-              {% for message in messages %}
-                <li>{{ message }}</li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        </center>
+        <!-- Django Messages for Errors -->
+        {% if messages %}
+          <div class="messages">
+            {% for message in messages %}
+              <div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
       </form>
 
       <!-- Link to Sign In -->
@@ -67,6 +53,20 @@
         </span>
       </div>
     </div>
-</div>
+  </div>
 </body>
+
+<!-- JavaScript Popups for Email Verification -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    {% if email_sent %}
+      alert("A verification email has been sent. Please check your inbox.");
+    {% endif %}
+
+    {% if email_verified %}
+      alert("Email verified successfully! You can now log in!");
+      window.location.href = "{% url 'login' %}";  // Redirect after alert
+    {% endif %}
+  });
+</script>
 </html>
