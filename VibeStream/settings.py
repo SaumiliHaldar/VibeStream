@@ -36,6 +36,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',  
+    'rest_framework.authtoken',
+    'dj_rest_auth',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -175,8 +178,8 @@ LOGOUT_REDIRECT_URL = '/'  # Redirect to home page after logout
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': env('YOUR_GOOGLE_CLIENT_ID'),
-            'secret': env('YOUR_GOOGLE_CLIENT_SECRET'),
+            'client_id': env('GOOGLE_CLIENT_ID'),
+            'secret': env('GOOGLE_CLIENT_SECRET'),
         },
         'SCOPE': ['email', 'profile'],
         'AUTH_PARAMS': {'access_type': 'online'},
