@@ -167,8 +167,9 @@ nav {
 }
 
 .intro a {
-  background-color: #2a78b2;
+  background-color: #000;
   color: white;
+  width: 9rem;
   padding: 15px 32px;
   font-size: 1.1rem;
   margin-top: 20px;
@@ -179,14 +180,26 @@ nav {
 }
 
 .intro a:hover {
-  background-color: #1e4a78;
-  transform: translateY(-2px);
+  background-color: #fff;
+  color: #000;
 }
 
 .intro a:active {
   transform: translateY(1px);
 }
 
+.google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.google img {
+  height: 15px;
+}
 
 /* Dashboard Section */
 .dashboard {
