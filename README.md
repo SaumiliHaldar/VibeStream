@@ -22,6 +22,7 @@ VibeStream aims to revolutionize live streaming by providing robust tools for co
 - **Live Streaming**: Broadcast live video streams with minimal latency.
 - **Interactive Chat**: Real-time chat functionality to engage with the audience.
 - **User Authentication**: Secure user registration and login system.
+- **Google OAuth Login**: Sign in securely using Google authentication.
 - **Stream Management**: Tools to manage and customize live streams.
 - **Responsive Design**: Optimized for both desktop and mobile devices.
 - **Email Notifications**: Sends an email when a user account is created.
@@ -34,6 +35,7 @@ VibeStream aims to revolutionize live streaming by providing robust tools for co
 - **JavaScript**: For interactive elements.
 - **PostgreSQL**: Lightweight database for data storage.
 - **ZegoCloud**: API for seamless voice and video calls.
+- **OAuth 2.0**: Used for Google authentication.
 
 ## Installation
 
