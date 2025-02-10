@@ -217,7 +217,7 @@ nav {
 }
 
 .dashboard a {
-  background-color: #2a78b2;
+  background-color: #000;
   color: white;
   padding: 15px 32px;
   font-size: 1.1rem;
@@ -225,12 +225,12 @@ nav {
   border-radius: 8px;
   text-decoration: none;
   display: inline-block;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* transition: background-color 0.3s ease, transform 0.2s ease; */
 }
 
 .dashboard a:hover {
-  background-color: #1e4a78;
-  transform: translateY(-2px);
+  background-color: #fff;
+  color: #000;
 }
 
 .dashboard a:active {
@@ -262,6 +262,10 @@ nav {
 
   .intro a {
     padding: 12px 25px;
+    font-size: 1rem;
+    display: block;
+    width: 50%;
+    margin: 10px auto;
     font-size: 1rem;
   }
 
