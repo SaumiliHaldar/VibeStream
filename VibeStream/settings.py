@@ -185,3 +185,21 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS': {'access_type': 'online'},
     }
 }
+
+ACCOUNT_ADAPTER = 'allauth.account.adapter.DefaultAccountAdapter'
+SOCIALACCOUNT_AUTO_SIGNUP = True  # Automatically create users after login
+SOCIALACCOUNT_LOGIN_ON_GET = True  # Skip confirmation page
+SOCIALACCOUNT_ADAPTER = 'allauth.socialaccount.adapter.DefaultSocialAccountAdapter'
+
+
+# Redirect after login/signup
+LOGIN_REDIRECT_URL = "/dashboard/"  # Change this to your desired redirect URL
+ACCOUNT_SIGNUP_REDIRECT_URL = "/dashboard/"  
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"
+
+
+ACCOUNT_LOGIN_METHODS = {"email"}
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_LOGIN_ON_GET = True
