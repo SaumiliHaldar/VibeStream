@@ -102,11 +102,11 @@ def signin(request):
                 return redirect('/dashboard')  # Ensure redirect is properly set
             else:
                 messages.error(request, "Invalid credentials. Please try again.")
-                return redirect('signin')
+                return redirect('login')
 
         except User.DoesNotExist:
             messages.error(request, "Invalid credentials. Please try again.")
-            return redirect('signin')
+            return redirect('login')
 
     return render(request, 'login.html', {'tittle': 'Login'})
 
