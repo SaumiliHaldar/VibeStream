@@ -108,6 +108,9 @@ DATABASES = {
 }
 
 
+# SSL mode for production
+DATABASES['default']['OPTIONS'] = {'sslmode': 'require'}
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
