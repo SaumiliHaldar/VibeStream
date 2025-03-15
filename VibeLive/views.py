@@ -141,34 +141,3 @@ def join_room(request):
 def logout_view(request):
     logout(request)
     return redirect("/signin")
-
-
-# Function to generate a secure random password for Google Signin
-def generate_random_password(length=8):
-    """Generate a secure random password."""
-    punctuation = "!@#$%^&*"
-    characters = string.ascii_letters + string.digits + punctuation
-    return ''.join(random.choices(characters, k=length))
-
-@receiver(user_signed_up)
-def google_user_created(request, user, **kwargs):
-    """Handle new users signing up via Google."""
-    if not user.has_usable_password(): 
-        password = generate_random_password()
-        user.set_password(password)
-        user.save()
-
-        # Send email with login credentials
-        send_mail(
-            'Your VibeStream Account Credentials',
-            f'Hello {user.first_name},\n\n'
-            f'Your VibeStream account has been successfully created using Google.\n\n'
-            f'Email: {user.email}\n'
-            f'Password: {password}\n\n'
-            f'You can use these credentials to log in.\n\n'
-            f'Best Regards,\n'
-            f'Saumili Haldar\nVibeStream Team',
-            settings.EMAIL_HOST_USER,
-            [user.email],
-            fail_silently=False,
-        )
