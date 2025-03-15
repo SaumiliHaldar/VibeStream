@@ -10,10 +10,6 @@ from django.urls import reverse
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.http import HttpResponse
-import random
-import string
-from allauth.account.signals import user_signed_up
-from django.dispatch import receiver
 
 signer = Signer()
 
