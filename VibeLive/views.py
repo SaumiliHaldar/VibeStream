@@ -146,7 +146,8 @@ def logout_view(request):
 # Function to generate a secure random password for Google Signin
 def generate_random_password(length=8):
     """Generate a secure random password."""
-    characters = string.ascii_letters + string.digits + string.punctuation
+    punctuation = "!@#$%^&*"
+    characters = string.ascii_letters + string.digits + punctuation
     return ''.join(random.choices(characters, k=length))
 
 @receiver(user_signed_up)
