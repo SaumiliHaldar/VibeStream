@@ -165,7 +165,7 @@ def google_user_created(request, user, **kwargs):
             f'Your VibeStream account has been successfully created using Google.\n\n'
             f'Email: {user.email}\n'
             f'Password: {password}\n\n'
-            f'You can change your password anytime from your account settings.\n\n'
+            f'You can use these credentials to log in.\n\n'
             f'Best Regards,\n'
             f'Saumili Haldar\nVibeStream Team',
             settings.EMAIL_HOST_USER,
