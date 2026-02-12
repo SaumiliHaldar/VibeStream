@@ -168,15 +168,23 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')  # Load from .env
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')  # Load from .env
 
 
-# Google Authentication
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-LOGIN_REDIRECT_URL = '/dashboard'  # Redirect after login
-LOGOUT_REDIRECT_URL = '/'  # Redirect to home page after logout
+# Account settings
+ACCOUNT_LOGIN_METHODS = {'email'}
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = 'none' 
+ACCOUNT_ADAPTER = 'allauth.account.adapter.DefaultAccountAdapter'
 
+# Social account settings
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_LOGIN_ON_GET = True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = True  # Enable automatic account linking
+SOCIALACCOUNT_ADAPTER = 'VibeLive.adapters.MySocialAccountAdapter'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -185,24 +193,15 @@ SOCIALACCOUNT_PROVIDERS = {
             'secret': env('GOOGLE_CLIENT_SECRET'),
         },
         'SCOPE': ['email', 'profile'],
-        'AUTH_PARAMS': {'access_type': 'online'},
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+            'prompt': 'select_account',
+        },
     }
 }
 
-ACCOUNT_ADAPTER = 'allauth.account.adapter.DefaultAccountAdapter'
-SOCIALACCOUNT_AUTO_SIGNUP = True  # Automatically create users after login
-SOCIALACCOUNT_LOGIN_ON_GET = True  # Skip confirmation page
-SOCIALACCOUNT_ADAPTER = 'allauth.socialaccount.adapter.DefaultSocialAccountAdapter'
-
-
-# Redirect after login/signup
-LOGIN_REDIRECT_URL = "/dashboard/"  # Change this to your desired redirect URL
-ACCOUNT_SIGNUP_REDIRECT_URL = "/dashboard/"  
-ACCOUNT_LOGOUT_REDIRECT_URL = "/"
-
-
-ACCOUNT_LOGIN_METHODS = {"email"}
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-SOCIALACCOUNT_AUTO_SIGNUP = True
-SOCIALACCOUNT_LOGIN_ON_GET = True
+# Redirects
+LOGIN_REDIRECT_URL = "/dashboard/"
+ACCOUNT_SIGNUP_REDIRECT_URL = "/dashboard/"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/signin/"
+LOGOUT_REDIRECT_URL = "/"

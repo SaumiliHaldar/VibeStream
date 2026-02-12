@@ -112,8 +112,9 @@ def signin(request):
 
 @login_required
 def dashboard(request):
+    name = request.user.first_name or request.user.username.split('@')[0]
     context = {
-        'name': request.user.first_name,
+        'name': name,
         'tittle': 'Dashboard'
     }
     return render(request, 'dashboard.html', context)
